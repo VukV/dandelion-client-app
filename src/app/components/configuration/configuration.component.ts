@@ -7,13 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfigurationComponent implements OnInit {
 
-  token: string | null;
+  inputToken: string = "";
+  isTokenSet: boolean = false;
 
   constructor() {
-    this.token = localStorage.getItem("token");
+    if (localStorage.getItem("token")){
+      this.isTokenSet = true;
+    }
   }
 
   ngOnInit(): void {
+  }
+
+  setToken(){
+    if(this.inputToken.length != 0){
+      localStorage.setItem("token", this.inputToken);
+      this.isTokenSet = true;
+    }
+    else {
+      alert("Token can't be empty!");
+    }
   }
 
 }

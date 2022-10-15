@@ -11,6 +11,7 @@ import { SentimentAnalysisComponent } from './components/sentiment-analysis/sent
 import { TextSimilarityComponent } from './components/text-similarity/text-similarity.component';
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,12 +23,13 @@ import {CommonModule} from "@angular/common";
     SentimentAnalysisComponent,
     TextSimilarityComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    CommonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        CommonModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
