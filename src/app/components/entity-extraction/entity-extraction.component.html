@@ -11,12 +11,42 @@
   <div class="row justify-content-center">
     <div class="col-md-4">
       <label for="ee-text">Your text:</label>
-      <textarea class="form-control" id="ee-text" rows="3"></textarea>
+      <textarea [(ngModel)]="text" class="form-control" id="ee-text" rows="3"></textarea>
       <br>
-      <label for="confidence" class="form-label">Confidence:</label>
-      <input type="range" class="form-range" id="confidence">
+      <label for="confidence" class="form-label">{{ getConfidenceLabel() }}</label>
+      <input [(ngModel)]="confidence" type="range" class="form-range" id="confidence">
     </div>
   </div>
 
+  <br>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4 text-center">
+      <div class="form-check form-check-inline">
+        <input [(ngModel)]="image" class="form-check-input" type="checkbox" id="image" value="image">
+        <label class="form-check-label" for="image">image</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input [(ngModel)]="abstract" class="form-check-input" type="checkbox" id="abstract" value="abstract">
+        <label class="form-check-label" for="abstract">abstract</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input [(ngModel)]="categories" class="form-check-input" type="checkbox" id="categories" value="categories">
+        <label class="form-check-label" for="categories">categories</label>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row justify-content-center">
+    <div class="col-md-3 d-grid">
+      <button type="button" class="btn btn-primary btn-block" (click)="submitExtraction()">Submit</button>
+    </div>
+  </div>
 
 </div>
+
+
+
+
