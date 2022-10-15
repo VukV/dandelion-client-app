@@ -9,8 +9,22 @@
   <br><br>
 
   <div class="row justify-content-center">
-
+    <div class="col-md-4 text-center">
+      <label for="text1">First text:</label>
+      <textarea [(ngModel)]="textFirst" class="form-control" id="text1" rows="5"></textarea>
+    </div>
+    <div class="col-md-4 text-center">
+      <label for="text2">Second text:</label>
+      <textarea [(ngModel)]="textSecond" class="form-control" id="text2" rows="5"></textarea>
+    </div>
   </div>
 
+  <br>
+
+  <div class="row justify-content-center">
+    <div class="col-md-3 d-grid">
+      <button type="button" class="btn btn-primary btn-block" (click)="submitSimilarity()">Submit</button>
+    </div>
+  </div>
 
 </div>
