@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Language} from "../../model/language";
 
 @Component({
   selector: 'app-sentiment-analysis',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SentimentAnalysisComponent implements OnInit {
 
+  text: string = "";
+  language: Language = Language.automatic;
+  availableLanguages = Object.values(Language);
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  submitAnalysis(){
+    //TODO
+  }
 }

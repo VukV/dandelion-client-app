@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguageDetectionComponent implements OnInit {
 
+  text: string = "";
+  clean: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  submitDetection(){
+    //TODO
+  }
 }
