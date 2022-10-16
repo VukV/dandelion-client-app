@@ -8,8 +8,10 @@ export interface Entity {
   abstract: string,
   label: string,
   spot: string,
+  confidence: number,
   categories: string[],
-  image: Image
+  image: Image,
+  isReadMore: boolean
 }
 
 export interface Image {

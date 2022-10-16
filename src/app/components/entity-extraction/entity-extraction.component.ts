@@ -17,6 +17,8 @@ export class EntityExtractionComponent implements OnInit {
 
   entities: Entity[] = [];
 
+  isReadMore = true
+
   constructor(private entityExtractionService: EntityExtractionService) { }
 
   ngOnInit(): void {
@@ -29,8 +31,15 @@ export class EntityExtractionComponent implements OnInit {
   submitExtraction(){
     if (this.text != ""){
       this.entityExtractionService.getEntities(this.text, this.confidence/100, this.image, this.abstract, this.categories).subscribe((entity) => {
+        for(let e of entity.annotations){
+          e.isReadMore = true;
+        }
         this.entities = entity.annotations;
       })
     }
+  }
+
+  showText(entity: Entity) {
+    entity.isReadMore = !entity.isReadMore;
   }
 }
