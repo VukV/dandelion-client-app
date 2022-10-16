@@ -18,7 +18,7 @@ export class TextSimilarityService {
     return this.httpClient.get(url);
   }
 
-  private buildUrl(textFirst: string, textSecond: string){
+  private buildUrl(textFirst: string, textSecond: string): string{
     return  environment.textSimilarityApi + "/?text1=" + textFirst + "&text2=" + textSecond + "&token=" + localStorage.getItem("token");
   }
 }

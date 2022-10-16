@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LanguageDetectionService} from "../../services/language-detection.service";
+import {DetectedLanguage} from "../../model/responses/language-detection-response";
 
 @Component({
   selector: 'app-language-detection',
@@ -10,12 +12,21 @@ export class LanguageDetectionComponent implements OnInit {
   text: string = "";
   clean: boolean = false;
 
-  constructor() { }
+  detectedLanguages: DetectedLanguage[] = [];
+
+  constructor(private languageDetectionService: LanguageDetectionService) { }
 
   ngOnInit(): void {
   }
 
   submitDetection(){
-    //TODO
+    if(this.text != ""){
+      this.languageDetectionService.getDetectedLanguages(this.text, this.clean).subscribe((detection) => {
+        this.detectedLanguages = detection.detectedLangs;
+      })
+    }
+    else{
+      alert("Text field can't be empty!");
+    }
   }
 }
