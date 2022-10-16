@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   entityExtractionApi: 'https://api.dandelion.eu/datatxt/nex/v1',
-  textSimilarityApi: '',
+  textSimilarityApi: 'https://api.dandelion.eu/datatxt/sim/v1',
   languageDetectionApi: '',
   sentimentAnalysisApi: ''
 };

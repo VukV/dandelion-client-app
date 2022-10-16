@@ -17,8 +17,6 @@ export class EntityExtractionComponent implements OnInit {
 
   entities: Entity[] = [];
 
-  isReadMore = true
-
   constructor(private entityExtractionService: EntityExtractionService) { }
 
   ngOnInit(): void {
@@ -36,6 +34,9 @@ export class EntityExtractionComponent implements OnInit {
         }
         this.entities = entity.annotations;
       })
+    }
+    else{
+      alert("Text field can't be empty!");
     }
   }
 
