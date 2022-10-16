@@ -6,27 +6,33 @@ import {LanguageDetectionComponent} from "./components/language-detection/langua
 import {SentimentAnalysisComponent} from "./components/sentiment-analysis/sentiment-analysis.component";
 import {ConfigurationComponent} from "./components/configuration/configuration.component";
 import {HistoryComponent} from "./components/history/history.component";
+import {TokenGuard} from "./token.guard";
 
 const routes: Routes = [
   {
     path: "entity-extraction",
-    component: EntityExtractionComponent
+    component: EntityExtractionComponent,
+    canActivate: [TokenGuard]
   },
   {
     path: "",
-    component: EntityExtractionComponent
+    component: EntityExtractionComponent,
+    canActivate: [TokenGuard]
   },
   {
     path: "text-similarity",
-    component: TextSimilarityComponent
+    component: TextSimilarityComponent,
+    canActivate: [TokenGuard]
   },
   {
     path: "language-detection",
-    component: LanguageDetectionComponent
+    component: LanguageDetectionComponent,
+    canActivate: [TokenGuard]
   },
   {
     path: "sentiment-analysis",
-    component: SentimentAnalysisComponent
+    component: SentimentAnalysisComponent,
+    canActivate: [TokenGuard]
   },
   {
     path: "configuration",
