@@ -1,5 +1,10 @@
-export enum Language {
-  automatic = "auto",
-  english = "en",
-  italian = "it"
+export class Language {
+
+  name: string;
+  abbreviation: string;
+
+  constructor(name: string, abbreviation: string) {
+    this.name = name;
+    this.abbreviation = abbreviation;
+  }
 }

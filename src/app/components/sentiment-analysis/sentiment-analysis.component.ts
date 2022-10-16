@@ -9,10 +9,16 @@ import {Language} from "../../model/language";
 export class SentimentAnalysisComponent implements OnInit {
 
   text: string = "";
-  language: Language = Language.automatic;
-  availableLanguages = Object.values(Language);
+  availableLanguages: Language[];
+  language: string;
 
-  constructor() { }
+  constructor() {
+    this.availableLanguages = [
+      new Language("automatic", "auto"),
+      new Language("english", "en"),
+      new Language("italian", "it")];
+    this.language = this.availableLanguages[0].abbreviation;
+  }
 
   ngOnInit(): void {
   }
