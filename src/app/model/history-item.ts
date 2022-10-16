@@ -1,7 +1,7 @@
 export class HistoryItem {
 
-  private url: string;
-  private date: Date;
+  url: string;
+  date: Date;
 
   constructor(url: string) {
     this.url = url;

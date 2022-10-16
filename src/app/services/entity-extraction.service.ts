@@ -3,16 +3,19 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {EntityExtractionResponse} from "../model/responses/entity-extraction-response";
 import {environment} from "../../environments/environment";
+import {HistoryService} from "./history.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntityExtractionService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private historyService: HistoryService) { }
 
   getEntities(text: string, confidence: number, image: boolean, abstract: boolean, categories: boolean): Observable<EntityExtractionResponse>{
     let url: string = this.buildUrl(text, confidence, image, abstract, categories);
+    this.historyService.addToHistory(url);
+
     return this.httpClient.get<EntityExtractionResponse>(url);
   }
 

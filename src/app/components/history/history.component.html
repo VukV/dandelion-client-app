@@ -8,8 +8,11 @@
 
   <br><br>
 
-  <div class="row justify-content-center">
-
+  <div *ngFor="let historyItem of getHistory()" class="row justify-content-center">
+    <div class="col-md-12">
+      <h6>{{ historyItem.date | date: 'd.M.yyy., h:mm a' }}</h6>
+      <p>{{ historyItem.url }}</p>
+    </div>
   </div>
 
 
