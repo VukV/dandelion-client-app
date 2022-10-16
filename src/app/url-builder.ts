@@ -1,0 +1,5 @@
+interface UrlBuilder{
+
+  buildUrl(): string;
+
+}
