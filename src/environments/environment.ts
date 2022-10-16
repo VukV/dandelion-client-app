@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  entityExtractionApi: 'https://api.dandelion.eu/datatxt/nex/v1',
+  textSimilarityApi: '',
+  languageDetectionApi: '',
+  sentimentAnalysisApi: ''
 };
 
 /*

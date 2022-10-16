@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {EntityExtractionService} from "../../services/entity-extraction.service";
+import {Entity} from "../../model/responses/entity-extraction-response";
 
 @Component({
   selector: 'app-entity-extraction',
@@ -13,7 +15,9 @@ export class EntityExtractionComponent implements OnInit {
   abstract: boolean = false;
   categories: boolean =  false;
 
-  constructor() { }
+  entities: Entity[] = [];
+
+  constructor(private entityExtractionService: EntityExtractionService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +27,10 @@ export class EntityExtractionComponent implements OnInit {
   }
 
   submitExtraction(){
-    //TODO call service
+    if (this.text != ""){
+      this.entityExtractionService.getEntities(this.text, this.confidence/100, this.image, this.abstract, this.categories).subscribe((entity) => {
+        this.entities = entity.annotations;
+      })
+    }
   }
 }
