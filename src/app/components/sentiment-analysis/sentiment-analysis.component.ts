@@ -33,14 +33,10 @@ export class SentimentAnalysisComponent implements OnInit {
   }
 
   submitAnalysis(){
-    console.log(this.analysisScore);
-
     if(this.text != ""){
       this.sentimentAnalysisService.getSentimentAnalysis(this.text, this.language).subscribe((analysis) => {
         this.analysisScore = analysis.sentiment.score;
         this.analysisType = analysis.sentiment.type;
-
-        console.log(this.analysisScore, this.analysisType);
       })
     }
     else{
@@ -49,18 +45,14 @@ export class SentimentAnalysisComponent implements OnInit {
   }
 
   getScoreColor(score: number): string{
-    score = this.normalize(score, 0, 1);
-    let color = this.interpolate(this.red, this.green, score);
+    let normScore = this.normalize(score, -1, 1);
+    let color = this.interpolate(this.red, this.green, normScore);
 
     return color.getColorCode();
   }
 
   private normalize(value: number, lowerBound: number, upperBound: number): number{
-    //TODO fix normalization
-    console.log(value);
-    let norm = (0 - lowerBound) / (upperBound - lowerBound)
-    console.log(norm);
-    return norm;
+    return (value - lowerBound) / (upperBound - lowerBound);
   }
 
   private interpolate(colorFirst: Color, colorSecond: Color, value: number): Color{
