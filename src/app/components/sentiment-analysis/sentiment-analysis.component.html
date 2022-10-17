@@ -37,18 +37,18 @@
 
   <br><br>
 
-  <div *ngIf="analysisScore && analysisType" class="row justify-content-center">
+  <div *ngIf="analysisScore !== undefined && analysisType !== undefined" class="row justify-content-center">
     <div class="col-md-4 text-center">
       <h3 id="analysis-title">Analysis results:</h3>
     </div>
   </div>
 
-  <div *ngIf="analysisScore && analysisType" class="row justify-content-center">
+  <div *ngIf="analysisScore !== undefined && analysisType !== undefined" class="row justify-content-center">
     <div class="col-md-2 text-center">
       <h6>Score: {{ analysisScore }}</h6>
     </div>
     <div class="col-md-2 text-center">
-      <h6 [ngStyle]="{'color': interpolate()}">Type: {{ analysisType }}</h6>
+      <h6 [style.color]="getScoreColor(analysisScore)">Type: {{ analysisType }}</h6>
     </div>
   </div>
 
