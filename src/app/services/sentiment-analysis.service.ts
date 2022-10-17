@@ -20,7 +20,6 @@ export class SentimentAnalysisService {
   }
 
   private buildUrl(text: string, language: string){
-    console.log(language);
     return environment.sentimentAnalysisApi + "/?lang=" + language + "&text=" + text + "&token=" + localStorage.getItem("token");
   }
 }
