@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Language} from "../../model/language";
+import {SentimentAnalysisService} from "../../services/sentiment-analysis.service";
+import {SentimentType} from "../../model/responses/sentiment-analysis-response";
 
 @Component({
   selector: 'app-sentiment-analysis',
@@ -12,7 +14,10 @@ export class SentimentAnalysisComponent implements OnInit {
   availableLanguages: Language[];
   language: string;
 
-  constructor() {
+  analysisScore: number | undefined;
+  analysisType: SentimentType | undefined;
+
+  constructor(private sentimentAnalysisService: SentimentAnalysisService) {
     this.availableLanguages = [
       new Language("automatic", "auto"),
       new Language("english", "en"),
@@ -24,6 +29,21 @@ export class SentimentAnalysisComponent implements OnInit {
   }
 
   submitAnalysis(){
+    console.log(this.analysisScore);
+
+    if(this.text != ""){
+      this.sentimentAnalysisService.getSentimentAnalysis(this.text, this.language).subscribe((analysis) => {
+        this.analysisScore = analysis.sentiment.score;
+        this.analysisType = analysis.sentiment.type;
+      })
+    }
+    else{
+      alert("Text field can't be empty!");
+    }
+  }
+
+  interpolate(): string{
     //TODO
+    return "#FFFFF"
   }
 }

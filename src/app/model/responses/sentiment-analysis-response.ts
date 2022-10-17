@@ -1,7 +1,7 @@
 export interface SentimentAnalysisResponse {
   timestamp: string,
   time: number,
-
+  sentiment: Sentiment
 }
 
 export interface Sentiment {
