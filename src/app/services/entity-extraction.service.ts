@@ -22,14 +22,15 @@ export class EntityExtractionService {
   private buildUrl(text: string, confidence: number, image: boolean, abstract: boolean, categories: boolean): string {
     let include: string = "&include=";
     if(image){
-      include += "image";
+      include += "image,";
     }
     if(abstract){
-      include += ",abstract";
+      include += "abstract,";
     }
     if(categories){
-      include += ",categories";
+      include += "categories,";
     }
+    include = include.substring(0, include.length - 1);
 
     let url: string = environment.entityExtractionApi + "/?text=" + text + "&min_confidence=" + confidence;
     if(image || abstract || categories){
